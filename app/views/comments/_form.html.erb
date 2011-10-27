@@ -1,0 +1,54 @@
+
+$(function() {
+  $('a[rel=external]').attr('target', 'blank');
+});
+
+
+
+<%= form_for(@comment) do |f| %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+      <% @comment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :age %><br />
+    <%= select_tag "age", options_for_select([['15'], ['16'],['18'], ['20']]) %>
+  </div>
+  <div class="field">
+    <%= f.label :posted_on %><br />
+    <%= f.date_selelct :posted_on %>
+  </div>
+  <div class="field">
+    <%= f.label :male %>
+    <%= f.check_box :gender %>
+    <%= f.label :female %>
+    <%= f.check_box :gender %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit :onclick=""%>
+  </div>
+<% end %>
